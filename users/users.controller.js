@@ -32,11 +32,10 @@ function authenticate(req, res, next) {
 
 function registerSchema(req, res, next) {
     const schema = Joi.object({
-        name: Joi.string().required(),
-        email: Joi.string().required(),
-        phoneNumber: Joi.string().required(),
-        password: Joi.string().min(12).required(),
-        passport: Joi.string().required(),
+        firstName: Joi.string().required(),
+        lastName: Joi.string().required(),
+        username: Joi.string().required(),
+        password: Joi.string().min(6).required()
     });
     validateRequest(req, next, schema);
 }
@@ -65,11 +64,10 @@ function getById(req, res, next) {
 
 function updateSchema(req, res, next) {
     const schema = Joi.object({
-        name: Joi.string().empty(''),
-        email: Joi.string().empty(''),
-        phoneNumber: Joi.string().empty(''),
-        password: Joi.string().min(6).empty(''),
-        passport: Joi.string().empty(''),
+        firstName: Joi.string().empty(''),
+        lastName: Joi.string().empty(''),
+        username: Joi.string().empty(''),
+        password: Joi.string().min(6).empty('')
     });
     validateRequest(req, next, schema);
 }
